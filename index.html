@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+<title>NS IPTV Web</title>
+<link rel="stylesheet" href="styles.css" />
+<script src="https://cdn.jsdelivr.net/npm/hls.js@1.6.2/dist/hls.min.js"></script>
+</head>
+<body>
+<div id="app">
+  <video id="video" playsinline webkit-playsinline autoplay muted preload="auto"></video>
+  <div id="videoLoading" class="video-loading" aria-live="polite">Playlist download হচ্ছে…</div>
+  <div class="video-shade"></div>
+
+  <div class="top-ping">Ping: <b id="topPing">--</b></div>
+  <div class="top-network">Network: <b id="topNet">--</b></div>
+
+  <section id="channelPanel" class="side-panel left hidden" aria-hidden="true">
+    <div class="panel-title"><span>⌕</span> Channel List <button data-close="channelPanel">×</button></div>
+    <input id="channelSearch" class="search" placeholder="Search channel" />
+    <div id="channelList"></div>
+    
+    <div class="status-legend"><div><i class="dot green"></i> Working <b id="workingCount">0</b></div><div><i class="dot yellow"></i> Buffering <b id="bufferingCount">0</b></div><div><i class="dot red"></i> Dead <b id="deadCount">0</b></div></div>
+  </section>
+
+  <section id="actionRail" class="side-panel right hidden" aria-hidden="true">
+    <div class="rail-search">⌕ <input id="railSearch" placeholder="Search channel" /></div>
+    <button class="rail-btn active" id="audioBtn">⚙ Subtitle / Audio</button>
+    <button class="rail-btn" id="formatBtn">⚙ Video / Format</button>
+    <button class="rail-btn" id="favoriteBtn">★ Add to Favorites</button>
+    <button class="rail-btn" id="epgBtn">▣ EPG</button>
+    <button class="rail-btn" id="refreshBtn">⟳ Check Playlists / Refresh</button>
+    <button class="rail-btn" id="manualBtn">＋ Manual Playlist Add</button>
+    <button class="rail-btn" id="settingsBtn">⚙ Settings</button>
+  </section>
+
+
+  <div id="bottomOverlay" class="bottom-overlay">
+    <div class="channel-info">
+      <img id="channelLogo" src="assets/nstv_logo.png" onerror="this.src='assets/nstv_logo.png'" />
+      <div class="channel-text"><div><span id="channelNumber">001</span> <strong id="channelName">MiME Channel</strong> <em id="hdBadge">HD</em></div><div id="channelGroup">Bangla &nbsp;|&nbsp; Entertainment</div><div class="quality">★ Quality Score: <b id="qualityScore">--</b>/100</div></div>
+    </div>
+    <div class="metrics">
+      <div><span class="metric-label">▮▮▮ Ping</span><b id="ping">--</b></div>
+      <div><span class="metric-label">▣ Bitrate</span><b id="bitrate">--</b></div>
+      <div><span class="metric-label">▦ Resolution</span><b id="resolution">--</b></div>
+      <div><span class="metric-label">◎ Network Speed</span><b id="network">--</b></div>
+      <div class="now"><span>▣ <strong>Now Playing:</strong></span> <span id="epgTime">--:-- - --:--</span> <b id="epgTitle">EPG unavailable</b><div class="progress"><i id="epgProgress"></i></div><small id="epgLeft"></small></div>
+    </div>
+    <div class="clock"><b id="clock">--:--</b><small id="date">--/--</small></div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+</div>
+
+<div id="modalRoot"></div>
+<script src="app.js"></script>
+</body>
+</html>

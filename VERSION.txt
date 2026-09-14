@@ -1,0 +1,4 @@
+NS IPTV WEB 1.3.2
+Playback: Cloudflare Proxy + hls.js only for HLS
+Native HLS: disabled
+Proxy: upstream Referer/Origin forwarding enabled
