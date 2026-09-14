@@ -1,7 +1,8 @@
 const PRIMARY='https://raw.githubusercontent.com/shuvo880/iptv/refs/heads/master/MiME.m3u';
 // Set this to your deployed Cloudflare Worker URL. Example: https://ns-iptv-proxy.example.workers.dev/
 // Leave empty only if all playlist/stream URLs already support browser HTTPS+CORS.
-const PROXY_BASE='https://ns-iptv-proxy.shoyshobn.workers.dev/?url=';
+const PROXY_BASE =
+  'https://ns-iptv-proxy.shoyshobn.workers.dev/?url=';
 const proxyEnabled=()=>/^https:\/\//i.test(PROXY_BASE);
 const proxify=url=>proxyEnabled()?PROXY_BASE+encodeURIComponent(url):url;
 const LS={playlists:'nsiptv.web.playlists',selected:'nsiptv.web.selected',channels:'nsiptv.web.channels',history:'nsiptv.web.history',favorites:'nsiptv.web.favorites'};
